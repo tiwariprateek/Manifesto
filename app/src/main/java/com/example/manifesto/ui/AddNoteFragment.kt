@@ -50,6 +50,7 @@ class AddNoteFragment : BaseFragment() {
                 val note=Note(noteTitle,noteBody)
                 context?.let {
                     NoteDatabase(it).getNoteDao().addnote(note)
+                    it.toast("Note Saved")
                 }
             }
 
