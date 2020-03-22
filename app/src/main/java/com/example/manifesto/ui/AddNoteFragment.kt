@@ -12,11 +12,12 @@ import com.example.manifesto.R
 import com.example.manifesto.db.Note
 import com.example.manifesto.db.NoteDatabase
 import kotlinx.android.synthetic.main.fragment_add_note.*
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
  */
-class AddNoteFragment : Fragment() {
+class AddNoteFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +46,12 @@ class AddNoteFragment : Fragment() {
                 edit_text_note.requestFocus()
                 return@setOnClickListener
             }
-
-            val note=Note(noteTitle,noteBody)
+            launch {
+                val note=Note(noteTitle,noteBody)
+                context?.let {
+                    NoteDatabase(it).getNoteDao().addnote(note)
+                }
+            }
 
         }
 
