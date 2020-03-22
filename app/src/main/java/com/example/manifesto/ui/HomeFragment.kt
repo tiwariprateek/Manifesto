@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 
 import com.example.manifesto.R
+import com.example.manifesto.db.NoteDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +27,12 @@ class HomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        launch {
+            context?.let {
+                val note=NoteDatabase(it).getNoteDao().getAllNotes()
+            }
+        }
 
         floatingactionbutton.setOnClickListener {
             val action=HomeFragmentDirections.actionAddNote()
