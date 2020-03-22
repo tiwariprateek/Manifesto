@@ -1,0 +1,2 @@
+rootProject.name='Manifesto'
+include ':app'
