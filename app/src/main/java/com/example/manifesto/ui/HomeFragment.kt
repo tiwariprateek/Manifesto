@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 import com.example.manifesto.R
 import com.example.manifesto.db.NoteDatabase
@@ -28,9 +29,14 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        recycler_view_notes.setHasFixedSize(true)
+        recycler_view_notes.layoutManager=StaggeredGridLayoutManager(3,
+            StaggeredGridLayoutManager.VERTICAL)
+
         launch {
             context?.let {
-                val note=NoteDatabase(it).getNoteDao().getAllNotes()
+                val notes=NoteDatabase(it).getNoteDao().getAllNotes()
+                recycler_view_notes.adapter=NotesAdapter(notes)
             }
         }
 
