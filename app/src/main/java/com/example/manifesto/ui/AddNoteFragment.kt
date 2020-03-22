@@ -47,24 +47,11 @@ class AddNoteFragment : Fragment() {
             }
 
             val note=Note(noteTitle,noteBody)
-            savenote(note)
+
         }
 
     }
-    private fun savenote(note: Note){
-        class SaveNote:AsyncTask<Void,Void,Void>() {
-            override fun doInBackground(vararg p0: Void?): Void? {
-                NoteDatabase(activity!!).getNoteDao().addnote(note)
-                return null
-            }
 
-            override fun onPostExecute(result: Void?) {
-                super.onPostExecute(result)
-                Toast.makeText(activity,"Note Saved !!",Toast.LENGTH_LONG).show()
-            }
-        }
-        SaveNote().execute()
-    }
 
 
 }
