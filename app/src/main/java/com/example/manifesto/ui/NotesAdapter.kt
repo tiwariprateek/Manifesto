@@ -25,5 +25,9 @@ class NotesAdapter(private val notes:List<Note>):RecyclerView.Adapter<NotesAdapt
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.view.text_view_title.text=notes[position].title
         holder.view.text_view_desc.text=notes[position].note
+
+        holder.view.setOnClickListener {
+
+        }
     }
 }
