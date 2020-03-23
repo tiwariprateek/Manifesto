@@ -55,11 +55,16 @@ class AddNoteFragment : BaseFragment() {
                 return@setOnClickListener
             }
             launch {
-                val note=Note(noteTitle,noteBody)
                 context?.let {
-                    NoteDatabase(it).getNoteDao().addnote(note)
-                    it.toast("Note Saved")
-
+                    val mnote=Note(noteTitle,noteBody)
+                    if (note==null){
+                        NoteDatabase(it).getNoteDao().addnote(mnote)
+                        it.toast("Note Saved")
+                    }
+                    else
+                        mnote.id=note!!.id
+                        NoteDatabase(it).getNoteDao().updateNote(mnote)
+                        it.toast("Note Saved")
                     val action=AddNoteFragmentDirections.actionSaveNote()
                     Navigation.findNavController(view).navigate(action)
                 }
