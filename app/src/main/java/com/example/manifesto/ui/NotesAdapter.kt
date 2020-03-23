@@ -3,6 +3,7 @@ package com.example.manifesto.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.manifesto.R
 import com.example.manifesto.db.Note
@@ -27,6 +28,9 @@ class NotesAdapter(private val notes:List<Note>):RecyclerView.Adapter<NotesAdapt
         holder.view.text_view_desc.text=notes[position].note
 
         holder.view.setOnClickListener {
+            val action=HomeFragmentDirections.actionAddNote()
+            action.note=notes[position]
+            Navigation.findNavController(it).navigate(action)
 
         }
     }

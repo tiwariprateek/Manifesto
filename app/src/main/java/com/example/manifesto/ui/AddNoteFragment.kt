@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
  * A simple [Fragment] subclass.
  */
 class AddNoteFragment : BaseFragment() {
-
+    private var note: Note? =null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +30,12 @@ class AddNoteFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        arguments?.let {
+            note=AddNoteFragmentArgs.fromBundle(it).note
+            edit_text_title.setText(note?.title)
+            edit_text_note.setText(note?.note)
+        }
 
         savebttn.setOnClickListener {view->
 
