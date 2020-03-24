@@ -20,8 +20,10 @@ class NotesAdapter(private val notes:List<Note>):RecyclerView.Adapter<NotesAdapt
         )
 
     }
-
+    //To get the number of elements in list
     override fun getItemCount()=notes.size
+
+
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.view.text_view_title.text=notes[position].title
