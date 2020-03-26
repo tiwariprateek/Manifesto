@@ -30,7 +30,7 @@ class AddNoteFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+//Adding arguments to nav_graph.xml
         arguments?.let {
             note=AddNoteFragmentArgs.fromBundle(it).note
             edit_text_title.setText(note?.title)

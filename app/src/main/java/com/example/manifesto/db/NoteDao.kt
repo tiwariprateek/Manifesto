@@ -1,6 +1,5 @@
 package com.example.manifesto.db
 
-import android.provider.UserDictionary
 import androidx.room.*
 
 @Dao
