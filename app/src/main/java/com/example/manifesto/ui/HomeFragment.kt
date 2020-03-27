@@ -38,6 +38,7 @@ class HomeFragment : BaseFragment() {
             StaggeredGridLayoutManager.VERTICAL)
 
         launch {
+            //let to check wheather the context is not null
             context?.let {
                 val notes=NoteDatabase(it).getNoteDao().getAllNotes()
                 recycler_view_notes.adapter=NotesAdapter(notes)
